@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seat Selection & Upgrades</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+    h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 40px; /* Increased font size */
+            font-family: 'Merriweather', serif; /* Unique font */
+        }
+
+  .seating-plan {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 10px; /* Set row height */
+    gap: 60px; /* Increased space between columns */
+}
+
+
+  .seat {
+    position: relative; /* Added for positioning the tooltip */
+    width: 50px;
+    height: 50px;
+    background-color: #c3e6cb;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    padding: 5px; /* Added padding for space between seat numbers */
+  }
+
+  .occupied {
+    background-color: #f5c6cb;
+  }
+
+  .selected {
+    background-color: #ffeeba;
+  }
+
+  .window-seat::after {
+    content: "Window Seat";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px); /* Increased space from the seat */
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+
+  .seat.window-seat:hover::after {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Seat Selection</h1>
+    <div class="seating-plan">
+      <!-- Generate seats dynamically using JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Maximum number of seats
+    const maxSeats = 20;
+    
+    // Array to track seat occupancy
+    const seats = new Array(maxSeats).fill(false);
+    
+    // Function to create seats and handle click events
+    function createSeats() {
+      const seatingPlan = document.querySelector('.seating-plan');
+      seatingPlan.innerHTML = ''; // Clear existing seats
+      
+      let windowSeatCount = 0;
+
+      for (let i = 0; i < maxSeats; i++) {
+        const seat = document.createElement('div');
+        seat.classList.add('seat');
+        seat.textContent = i + 1;
+
+        // Mark window seats
+        if (windowSeatCount < 10 && (i % 4 === 0 || i % 4 === 3)) {
+          seat.classList.add('window-seat');
+          windowSeatCount++;
+        }
+
+        // Mark occupied seats in red
+        if (seats[i]) {
+          seat.classList.add('occupied');
+        }
+        
+        // Toggle seat selection on click
+        seat.addEventListener('click', () => {
+          if (!seats[i]) {
+            seat.classList.toggle('selected');
+          }
+        });
+        
+        seatingPlan.appendChild(seat);
+      }
+    }
+    
+    // Initialize the seating plan
+    createSeats();
+  </script>
+</body>
+</html>

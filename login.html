@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to bottom right, #a8c0ff, #ffa8e0);
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 350px;
+            height: 350x;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #cef4f6;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+       
+        button {
+            width: 300px;
+            padding: 6px 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 6px;
+            background-color: #008CBA;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #fd3535;
+        }
+
+        .login-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MNZ HORIZON</h1>
+
+        <section>
+            <form action="adminlogin.php" method="get">
+                <button type="submit"><i class="fas fa-user-circle login-icon"></i> Admin Login</button>
+            </form>
+        </section>
+        <br>
+
+        <section>
+            <form action="employeelogin.php" method="get">
+                <button type="submit"><i class="fas fa-user login-icon"></i> Employee Login</button>
+            </form>
+        </section>
+        <br>
+
+        <section>
+            <form action="signin.php" method="get">
+                <button type="submit"><i class="fas fa-user-lock login-icon"></i> User Login</button>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
